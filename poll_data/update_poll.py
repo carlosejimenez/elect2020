@@ -1,4 +1,4 @@
-import argparse
+#!/usr/bin/env python3
 import wget
 
 
@@ -11,21 +11,7 @@ poll_urls = {
 
 
 if __name__ == '__main__':
-    params = argparse.ArgumentParser(description='Downloads recent polling data from fivethirtyeight.')
-    params.add_argument('--all', action='store_true')
-    params.add_argument('--president-2020', action='store_true')
-    params.add_argument('--senate-2020', action='store_true')
-    params.add_argument('--president-2020-avgs', action='store_true')
-    params.add_argument('--president-hist-avgs', action='store_true')
-
-    args = params.parse_args()
-    if args.all:
-        for url in poll_urls.values():
-            filename = wget.download(url)
-            print(f'Updated {filename}')
-    else:
-        for poll in poll_urls.keys():
-            if getattr(args, poll):
-                filename = wget.download(poll_urls[poll])
-                print(f'Updated {filename}')
+    for poll in poll_urls.keys():
+        filename = wget.download(poll_urls[poll])
+        print(f'Updated {filename}')
     print(f'Done.')
