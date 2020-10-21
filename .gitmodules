@@ -1,0 +1,3 @@
+[submodule "538_data"]
+	path = 538_data
+	url = https://github.com/fivethirtyeight/data.git
