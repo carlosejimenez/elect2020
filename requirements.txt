@@ -3,3 +3,4 @@ census==0.8.15
 jupyterlab==2.2.6
 wget==3.2
 datapungi_fed
+ipywidgets>=7.5
