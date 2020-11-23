@@ -1,13 +1,31 @@
-\subsection{Data Specification}
-To test our hypothesis, we develop a prediction task 
+\subsection{Experiment Specification}
+To test our hypothesis, we setup an experiment. We consider the problem of trying to predict ``major party`` Democrat vote share for each battleground state and non battleground state. That is, we predict Democrat vote share of the votes that went to a Democrat or Republican (i.e. we ignore third party vote share). For a particular election, we calculate ``major party'' vote share $D = \frac{D'}{(D' + R')}$, where $D'$ and $R'$ are the unnormalized vote share of Biden and Trump respectively. Naturally, ``major party'' Republican vote share is $R = 1-D$. We ignore third party candidates since their actual vote share is usually minuscule and third party candidates' inclusion in polls in very irregular.
+\\~\\
+We test our predictions against the preliminary vote share results provided by the New York Times and \cite{scraper}.
+
+\subsubsection{Determining Battleground States}
+We label 15 states as battleground states based upon their ``major party'' vote share difference $\Delta = |R - D|$ from the 2016 presidential election. We choose the 15 states with the smallest $\Delta$. Namely: Arizona, Colorado, Florida, Georgia, Maine, Michigan, Minnesota, Nevada, New Hampshire, New Mexico, North Carolina, Ohio, Pennsylvania, Virginia, and Wisconsin.
+\\~\\
+This choice ended up being a fairly good determiner, capturing 13 of the 15 closest races in 2020; the exceptions being Texas and Iowa.
 
 \subsection{Poll Based Models}
-To calculate predictions, we use 3 poll based models, which track an exponentially weighted moving average of major party vote share for each state.
+State polling data forms a primary data source for many election forecasting models, including probabilistic simulation models such as \cite{Linzer2013DynamicBF}, which informs the implementation of some of the most popular public election forecast platforms, such as \cite{fivethirtyeight, economist}. Naturally, state polling seems like a useful means to determine the outcome of an election before it happens. While each model might have their own special means of incorporating additional data, recent state polling data in the run up of the election usually plays a very significant role in most models which incorporate polling at all. Since we aren't so interested in evaluating any individual forecaster, but rather the predictability of state elections themselves, we develop our own set of very simple models based only on polling data. To develop our models, we use state polls which only include Biden and Trump as candidates, taken between May 03, 2020 and October 31, 2020 aggregated by \cite{fivethirtyeight}.
+
+\subsection{Exponentially Weighted Moving Average}
+To make predictions, we use 5 simple models, based on an exponentially weighted moving average of ``major party'' vote share for each state.
+$$
+D_i = \alpha\cdot w(s_i) \cdot p_{i} + (1-\alpha\cdot w(s_i)) \cdot D_{i-1}
+$$
+Where $p_i$ is the next poll's Democrat vote share, $\alpha$ is the next poll's maximum weighting, and $w: \mathbb{N} \rightarrow \mathbb{R}_{[0, 1]}$ is a weighting function on the next poll's sample size $s_i$.
+\\~\\
+We use 5 different models with different values for $\alpha$ and $w$ in order to capture the behavior of models which may be more aggressive to incorporate more recent polling and those which are more conservative. 
 
 \begin{itemize}
-    \item {\bf Logistic 04} - Uses an $\alpha = 0.4$ and a sample size weight calculated with a logistic function with a midpoint of 1000 and $k=1e-3$.
-    \item {\bf Lambda 02} - Uses an $\alpha = 0.2$ and does not weight polls by sample size.
-    \item {\bf Lambda 1} - Is a naive baseline, using an $\alpha = 1$; equivalent to predicting the most recent poll result.
+    \item {\bf EWMA(0.3)-LW} - Uses an $\alpha = 0.3$ and a sample size weight calculated with a logistic function with a midpoint of 1000 and $k=1e-3$.
+    \item {\bf EWMA(0.3)} - Uses an $\alpha = 0.3$ and does not weight polls by sample size.
+    \item {\bf EWMA(0.1)-LW} - Uses an $\alpha = 0.1$ and a sample size weight calculated with a logistic function with a midpoint of 1000 and $k=1e-3$.
+    \item {\bf EWMA(0.1)} - Uses an $\alpha = 0.1$ and does not weight polls by sample size.
+    \item {\bf EWMA(1)} - Is a naive baseline, using an $\alpha = 1$; equivalent to predicting the most recent poll result.
 \end{itemize}
 
 
