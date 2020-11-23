@@ -1,0 +1,8 @@
+\subsection{Poll Based Models}
+To calculate predictions, we use 3 poll based models, which track an exponentially weighted moving average of major party vote share for each state.
+
+\begin{itemize}
+    \item {\bf Logistic 04} - Uses an $\alpha = 0.4$ and a sample size weight calculated with a logistic function with a midpoint of 1000 and $k=1e-3$.
+    \item {\bf Lambda 02} - Uses an $\alpha = 0.2$ and does not weight polls by sample size.
+    \item {\bf Lambda 1} - Is a naive baseline, using an $\alpha = 1$; equivalent to predicting the most recent poll result.
+\end{itemize}
