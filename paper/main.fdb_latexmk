@@ -1,15 +1,15 @@
 # Fdb version 3
-["bibtex main"] 1606093273 "main.aux" "main.bbl" "main" 1606094272
+["bibtex main"] 1606093273 "main.aux" "main.bbl" "main" 1606097225
   "/usr/local/texlive/2019/texmf-dist/bibtex/bst/base/unsrt.bst" 1292289607 18030 1376b4b231b50c66211e47e42eda2875 ""
-  "main.aux" 1606094272 1643 f66cadc16826c10faea9589a17006560 "pdflatex"
+  "main.aux" 1606097224 1643 f66cadc16826c10faea9589a17006560 "pdflatex"
   "references.bib" 1606089512 940 d10a7dc785a3a7d44ce8586130eedadd ""
   (generated)
   "main.blg"
   "main.bbl"
-["pdflatex"] 1606094271 "/Users/carlosjimenez/projects/elect2020/paper/main.tex" "/Users/carlosjimenez/projects/elect2020/paper/main.pdf" "main" 1606094272
-  "/Users/carlosjimenez/projects/elect2020/paper/main.aux" 1606094272 1643 f66cadc16826c10faea9589a17006560 ""
+["pdflatex"] 1606097223 "/Users/carlosjimenez/projects/elect2020/paper/main.tex" "/Users/carlosjimenez/projects/elect2020/paper/main.pdf" "main" 1606097225
+  "/Users/carlosjimenez/projects/elect2020/paper/main.aux" 1606097224 1643 f66cadc16826c10faea9589a17006560 ""
   "/Users/carlosjimenez/projects/elect2020/paper/main.tex" 1606093122 1061 3eb679b37efd995c725a783211c5be5f ""
-  "/dev/null" 1606094271 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "/dev/null" 1606097225 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
@@ -108,18 +108,18 @@
   "arxiv.sty" 1606092222 7641 73d629a9ecdf79da8148f7f0df8c6662 ""
   "conclusion.tex" 1606093244 0 d41d8cd98f00b204e9800998ecf8427e ""
   "introduction.tex" 1606093196 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "main.aux" 1606094272 1643 f66cadc16826c10faea9589a17006560 "pdflatex"
+  "main.aux" 1606097224 1643 f66cadc16826c10faea9589a17006560 "pdflatex"
   "main.bbl" 1606093273 49 0eba253fc001332e731e8aba3f23127b "bibtex main"
-  "main.out" 1606094272 289 7b7effa7b43059642809e8ac4728276a "pdflatex"
+  "main.out" 1606097224 289 7b7effa7b43059642809e8ac4728276a "pdflatex"
   "main.tex" 1606093122 1061 3eb679b37efd995c725a783211c5be5f ""
-  "methods.tex" 1606094271 580 ef15fbecec6cc1b898023e83f90f9467 ""
+  "methods.tex" 1606097222 583 1fa7ede66e7bf10007104c9e0a8da478 ""
   "related_work.tex" 1606093218 0 d41d8cd98f00b204e9800998ecf8427e ""
   "results.tex" 1606093238 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "title.tex" 1606093044 1298 23649cce1244f0b151ed315fa9cc9cc0 ""
+  "title.tex" 1606097223 1266 5129952d2b8e35a0b095688e11a5d244 ""
   (generated)
   "main.out"
-  "main.log"
-  "main.pdf"
-  "main.aux"
   "/Users/carlosjimenez/projects/elect2020/paper/main.pdf"
+  "main.pdf"
+  "main.log"
   "/Users/carlosjimenez/projects/elect2020/paper/main.log"
+  "main.aux"
