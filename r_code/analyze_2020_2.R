@@ -63,10 +63,16 @@ monthly_mae_sumstats <- monthly_state %>%
 
 ggplot(monthly_mae_sumstats, aes(modeldate, mean_MAE, color = battleground_2016)) +
   geom_line(aes(group = battleground_2016))+
-  geom_errorbar(aes(ymin = lower_95, ymax = upper_95), position = "dodge", width = 5)
+  geom_errorbar(aes(ymin = lower_95, ymax = upper_95), position = "dodge", width = 5)+
+  ggtitle("Absolute Error in Vote Share Based on 538 Prediction", 
+          subtitle = "The prediction error has not decreased over time.\n Battle ground states have lower prediction mean absolute error.")+
+  ggsave("../figures/SummaryMAE_538.png", width = 7, height = 5)
+
 
 
 ggplot(monthly_state, aes(factor(modeldate), error_2020, color = battleground_2016)) +
   geom_jitter(width = 0.1)+
-  ggtitle("Prediction Error in Vote Share Based on 538 Prediction")+
-  xlab("Prediction Date")
+  ggtitle("Prediction Error in Vote Share Based on 538 Prediction", 
+          subtitle = "We observed a smaller spread in prediction error among battleground states.")+
+  xlab("Prediction Date")+
+  ggsave("../figures/SignedError_538.png", width = 7, height = 5)
