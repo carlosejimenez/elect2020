@@ -29,11 +29,11 @@ Interestingly, the sample size weighted models performs worse for each model com
 \end{table}
 
 \subsection{Bias and Predictability}
-Polling methodology varies from pollster to pollster, but demographic stratification weighting is commonly used for general election polling in the US and elsewhere, as described in \cite{Lauderdale2020ModelbasedPP}. While it may be difficult to determine whether a pollster has chosen the right post stratification weights, we can consider the effects of polls altogether to determine whether they consistently make mistakes in the same direction. 
+Polling methodology varies from pollster to pollster, but demographic stratification weighting is commonly used for general election polling in the US and elsewhere, as described in \cite{Lauderdale2020ModelbasedPP}. While it may be difficult to determine whether a pollster has chosen the right post stratification weights, we can consider the effects of polls altogether to determine whether they consistently make mistakes in the same direction. Consider figure \ref{fig:ewma_01_2020-05-01-2020-10-31_signed_error}; we show the signed error for each state on the EWMA(0.1) model, showing the model has a considerable bias towards Biden for nearly every state. If we consider the mean signed error for each model in \ref{fig:ewma_03_lw_ewma_03_ewma_01_lw_ewma_01_ewma_1_mean_signed_error}, we see that every model suffers from substantial bias in favor of Biden. Since each model derives its prediction from poll data, this would suggest that pollster's methodology generally made similar mistakes in all US states. While further research is needed to identify the sources of these mistakes, since the expected value of the signed error term is substantially non-zero, a forecaster could improve predictions with a simple calibration step. With respect to predictability, this is all to say that we can expect an improvement in predictability with improved polling methodology. Since it seems that the bias affected battleground states and non-battleground states in a similar manner, these results do not necessarily suggest that battleground states are easier to predict as a result of polling methodology bias.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[height=25em]{figures/ewma_01_2020-05-01-2020-10-31_signed_error.png}
+    \includegraphics[height=20em]{figures/ewma_01_2020-05-01-2020-10-31_signed_error.png}
     \label{fig:ewma_01_2020-05-01-2020-10-31_signed_error}
 \end{figure}
 
