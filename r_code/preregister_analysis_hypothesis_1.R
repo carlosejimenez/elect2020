@@ -6,7 +6,7 @@
 
 library(tidyverse)
 pred_data_538 <- read_csv("../538_data/presidential_state_toplines_2020.csv")
-
+result_2016 <- read_csv("../label_data/2016_pres_labels_battleground.csv")
 # Step 1: select columsn we would need
 # vote share from incumbant, challenger and others
 # state
@@ -33,7 +33,6 @@ ggplot(draw_sample, aes(x=modeldate, y = voteshare_inc, colour = state))+
 
 # step 3: include result from 2016 prez as if it's true election result for 2020
 
-result_2016 <- read_csv("../label_data/2016_pres_labels.csv")
 data_w_2016_results <- subset %>%
   dplyr::left_join(result_2016) %>%
   dplyr::mutate(rep_vote_share_pred = rep_vote_share_pred/100, 
@@ -42,25 +41,22 @@ data_w_2016_results <- subset %>%
                 rep_vote_share_act_2016 = rep_vote_share) %>%
   dplyr::mutate(mae_2016 = abs(rep_vote_share_pred - rep_vote_share_act_2016))
 
-ggplot(data_w_2016_results, aes(modeldate, mae_2016))+
-  geom_line() +
-  facet_wrap(~state)
+days <- lubridate::ymd(c("2020-06-01", "2020-07-01","2020-08-01","2020-09-01", "2020-10-01", "2020-10-29"))
 
-ggplot(data_w_2016_results %>% filter(state %in% states), 
-       aes(modeldate, rep_vote_share_pred))+
-  geom_point()+
-  facet_wrap(~state)
+monthly_state <-  data_w_2016_results %>% filter(modeldate %in% days)
 
+ggplot(monthly_state, aes(factor(modeldate), mae_2016, color = battleground)) +
+  geom_jitter()
 
-ggplot(data_w_2016_results %>% filter(state %in% states), 
-       aes(modeldate, rep_vote_share_pred - rep_vote_share_act_2016))+
-  geom_point()+
-  facet_wrap(~state)
+monthly_mae_sumstats <- monthly_state %>%
+  group_by(modeldate, battleground) %>%
+  summarize(mean_MAE = mean(mae_2016), 
+            var_MAE = var(mae_2016), 
+            median_MAE = median(mae_2016)) 
 
+  
+ggplot(monthly_summary, aes(modeldate, mean_MAE, color = battleground)) +
+  geom_line()
 
-ggplot(data_w_2016_results %>% filter(state %in% states), aes(modeldate, mae_2016))+
-  geom_line() +
-  facet_wrap(~state)
-
-
-## categorize 
+ggplot(monthly_mae_sumstats, aes(modeldate, median_MAE, color = battleground)) +
+  geom_line()
