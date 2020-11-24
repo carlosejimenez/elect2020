@@ -45,3 +45,27 @@ Polling methodology varies from pollster to pollster, but demographic stratifica
     \caption{}
     \label{fig:ewma_03_lw_ewma_03_ewma_01_lw_ewma_01_ewma_1_mean_signed_error}
 \end{figure}
+
+
+\subsection{Predictability Across Time}
+
+Prediction results from FiveThirtyEight.com provides an interesting case study. The site publishes an updated prediction every day since June 2020 throughout right before election. \ref{fig:SignedError_538} demonstrates how far off the predictions are across different months. Each dot represents a prediction in a state. A perfect prediction would mean that all dots fall along a horizontal line at 0. The prediction error among battleground states are fall closer around 0 than that among non-battleground states.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=26em]{figures/SignedError_538.png}
+    \caption{}
+    \label{fig:SignedError_538}
+\end{figure}
+
+When we use mean absolute error as the proxy of unpredictability, we also find that battleground states have lower errors. However, the subgroup means are not statistically different across all 6 months.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=26em]{figures/SummaryMAE_538.png}
+    \caption{}
+    \label{fig:SummaryMAE_538}
+\end{figure}
+
+However, both figures \ref{fig:SignedError_538} and \ref{fig:SummaryMAE_538} show an unexpected result - the prediction error does not go down as the date of the prediction is closer to the actual election.
+
